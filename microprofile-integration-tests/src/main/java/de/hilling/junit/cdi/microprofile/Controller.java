@@ -10,23 +10,23 @@ public class Controller implements ControllerService {
 
     @Inject
     @ConfigProperty(name = "some.string.property")
-    private String stringProperty;
+    String stringProperty;
 
     @Inject
     @ConfigProperty(name = "some.integer.property")
-    private Integer intProperty;
+    Integer intProperty;
 
     @Inject
     @ConfigProperty(name = "some.boolean.property")
-    private Boolean boolProperty;
+    Boolean boolProperty;
 
     @Inject
     @ConfigProperty(name = "some.long.property")
-    private Long longProperty;
+    Long longProperty;
 
     @Inject
     @ConfigProperty(name = "some.horse.property")
-    private Horse horseProperty;
+    Horse horseProperty;
 
     @Override
     public String getStringProperty() {

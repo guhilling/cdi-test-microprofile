@@ -1,4 +1,5 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>de.hilling.junit.cdi</groupId>
@@ -19,8 +20,8 @@
         <weld.version>3.1.2.Final</weld.version>
         <github.global.server>github</github.global.server>
         <junit.jupiter.version>5.5.2</junit.jupiter.version>
-        <thorntail.version>2.5.0.Final</thorntail.version>
         <smallrye.version>1.3.9</smallrye.version>
+        <quarkus.version>0.22.0</quarkus.version>
     </properties>
 
     <scm>
@@ -46,7 +47,7 @@
     <ciManagement>
         <system>Travis CI</system>
         <url>https://travis-ci.org/guhilling/cdi-test-extensions</url>
-        <notifiers />
+        <notifiers/>
     </ciManagement>
 
     <developers>
@@ -70,6 +71,13 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>io.quarkus</groupId>
+                <artifactId>quarkus-bom</artifactId>
+                <version>${quarkus.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
             <dependency>
                 <groupId>de.hilling.junit.cdi</groupId>
                 <artifactId>cdi-test-core</artifactId>
@@ -109,13 +117,6 @@
                 <groupId>org.eclipse.microprofile.config</groupId>
                 <artifactId>microprofile-config-api</artifactId>
                 <version>1.3</version>
-            </dependency>
-            <dependency>
-                <groupId>io.thorntail</groupId>
-                <artifactId>bom</artifactId>
-                <version>${thorntail.version}</version>
-                <type>pom</type>
-                <scope>import</scope>
             </dependency>
             <dependency>
                 <groupId>javax.enterprise</groupId>

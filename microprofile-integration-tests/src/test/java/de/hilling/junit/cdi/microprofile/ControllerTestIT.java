@@ -1,47 +1,57 @@
 package de.hilling.junit.cdi.microprofile;
 
-import org.eclipse.microprofile.rest.client.RestClientBuilder;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
+import io.quarkus.test.junit.QuarkusTest;
 import org.junit.jupiter.api.Test;
 
-import java.net.URI;
+import static io.restassured.RestAssured.given;
+import static org.hamcrest.CoreMatchers.is;
 
-class ControllerTestIT {
+@QuarkusTest
+public class ControllerTestIT {
 
-
-    private ControllerService controllerService;
-
-    @BeforeEach
-    void setUp() throws Exception {
-        URI apiUri = new URI("http://127.0.0.1:8080/");
-        controllerService = RestClientBuilder.newBuilder()
-                                             .baseUri(apiUri)
-                                             .build(ControllerService.class);
-    }
 
     @Test
     void assertStringProperty() {
-        Assertions.assertEquals("Message from test", controllerService.getStringProperty());
+        given()
+                .when().get("/app/propertyString")
+                .then()
+                .statusCode(200)
+                .body(is("Runtime Defaults Demo"));
     }
 
     @Test
     void assertIntegerProperty() {
-        Assertions.assertEquals(915, controllerService.getIntegerProperty());
+        given()
+                .when().get("/app/propertyInteger")
+                .then()
+                .statusCode(200)
+                .body(is("815"));
     }
 
     @Test
     void assertLongProperty() {
-        Assertions.assertEquals(81508150815081L, controllerService.getLongProperty());
+        given()
+                .when().get("/app/propertyLong")
+                .then()
+                .statusCode(200)
+                .body(is("81508150815081"));
     }
 
     @Test
     void assertBooleanProperty() {
-        Assertions.assertTrue(controllerService.getBoolProperty());
+        given()
+                .when().get("/app/propertyBoolean")
+                .then()
+                .statusCode(200)
+                .body(is("true"));
     }
 
     @Test
     void assertHorseProperty() {
-        Assertions.assertEquals("Rih", controllerService.getHorseProperty());
+        given()
+                .when().get("/app/propertyHorse")
+                .then()
+                .statusCode(200)
+                .body(is("Rih"));
     }
 }
