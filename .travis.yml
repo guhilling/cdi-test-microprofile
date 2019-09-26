@@ -14,8 +14,10 @@ install: "/bin/true"
 
 matrix:
   include:
-  - name: Java 10
-    jdk: openjdk10
+    - name: Java 12
+      jdk: openjdk12
+    - name: Java 13
+      jdk: openjdk13
   - name: Java 11
     jdk: openjdk11
     env: COVERAGE=1
