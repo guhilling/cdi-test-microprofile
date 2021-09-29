@@ -12,7 +12,7 @@
     <description>cdi-test Add-On for Testing Projects using Eclipse Microprofile Config</description>
 
     <properties>
-        <cdi-test.version>2.4.1</cdi-test.version>
+        <cdi-test.version>3.0.0</cdi-test.version>
         <cdi-test-extensions.version>2.2.1</cdi-test-extensions.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>11</java.version>
